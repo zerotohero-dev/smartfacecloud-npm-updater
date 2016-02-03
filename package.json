@@ -1,0 +1,27 @@
+{
+  "name": "smartfacecloud-updater",
+  "version": "0.0.1",
+  "description": "Auto updater for SmartfaceCloud",
+  "main": "index.js",
+  "bin": {
+    "smartfacecloud-updater": "bin/global-exec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SmartfaceIO/smartfacecloud-npm-updater"
+  },
+  "author": "Smartface.io",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SmartfaceIO/smartfacecloud-npm-updater/issues"
+  },
+  "homepage": "https://github.com/SmartfaceIO/smartfacecloud-npm-updater",
+  "preferGlobal": "true",
+  "dependencies": {
+    "minimist": "^1.1.2",
+    "semver": "5.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}

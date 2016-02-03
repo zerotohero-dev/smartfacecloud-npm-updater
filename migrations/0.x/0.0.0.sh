@@ -1,0 +1,1 @@
+# Migration scripts will be created in this fashion.
