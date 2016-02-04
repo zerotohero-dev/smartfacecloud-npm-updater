@@ -12,6 +12,9 @@
 			},
 			"0.0.3": {
 				"description": "Updated the updater plugin itself"
+			},
+			"0.0.4": {
+				"description": "Added emulator support"
 			}
 		}
 	}
