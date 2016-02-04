@@ -5,29 +5,10 @@
 		},
 		"0.0.x": {
 			"meta": {
-				"description": "Security update related to Android"
+				"description": "First version"
 			},
-			"0.0.0": {},
-			"0.0.1": {},
-			"0.0.2": {
-				"isMandatory": true
-			},
-			"0.0.3": {}
-			,
-			"0.0.4": {
-				"isMandatory": true
-			}
-		},
-		"0.1.x": {
-			"meta": {
-				"description": "Security update related to Android",
-				"isMandatory": true,
-				"workspaceMigration": true
-			},
-			"0.1.0": {
-				"meta": {
-					"description": "Security update related to Android"
-				}
+			"0.0.1": {
+				"description": "First version"
 			}
 		}
 	}

@@ -23,7 +23,10 @@ function facade(args) {
 				if (globallyInstalledPackages === '') {
 					return console.log('no globallyInstalledPackages', globallyInstalledPackages);
 				}
-				const packagesThatCanBeInstalled = getPackageSnapshotsThatCanBeUpdated(packageSnapshots);
+				const packagesThatCanBeInstalled = filterPackageSnapshotsThatCanBeUpdated(packageSnapshots);
+				//In the future the below logic can be more complex
+				//There will be ways to update workspace via migrations
+				//And there will be options for upgrading minor or major versions
 				const snapshotKey = packagesThatCanBeInstalled.pop();
 				installSnapshot(snapshotKey, callbackAllInstalled);
 			});
@@ -33,6 +36,9 @@ function facade(args) {
 
 function callbackAllInstalled(err, data) {
 	console.log(err, data);
+	execNpmGlobalDependenciesList(function(err, data) {
+		console.log(err, data);
+	});
 }
 
 function execNpmGlobalDependenciesList(callback) {
@@ -61,7 +67,7 @@ function execNpmWrapper(cliArgs, callback) {
 	});
 }
 
-function getPackageSnapshotsThatCanBeUpdated(packageSnapshots) {
+function filterPackageSnapshotsThatCanBeUpdated(packageSnapshots) {
 	const patchLevel = packageSnapshots[CURRENT_VERSION.major + '.x'][CURRENT_VERSION.major + '.' + CURRENT_VERSION.minor + '.x'];
 	const patchLevelAllVersionKeys = Object.keys(patchLevel);
 	const patchLevelGreaterVersionKeys = patchLevelAllVersionKeys.filter(function(key) {
@@ -81,7 +87,6 @@ function installPackages(packageSnapshots, callbackAllInstalled) {
 		return key + '@' + packageSnapshots[key];
 	});
 	const cmd = ['install', '-g', '--json'].concat(packages).join(' ');
-	return console.log(cmd);
 	execNpmWrapper(['install', '-g', '--json'].concat(packages), callbackAllInstalled);
 }
 
@@ -95,14 +100,6 @@ function installSnapshot(snapshotKey, callbackAllInstalled) {
 			return;
 		}
 		installPackages(json, callbackAllInstalled);
-	});
-}
-
-function installUpdater() {
-	proc.execFile("npm", {
-	  args: ['install', '/'] 
-	}, function(err, stdout, stderr) {
-	  console.log(err, stderr, stdout);
 	});
 }
 
