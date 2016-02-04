@@ -9,6 +9,9 @@
 			},
 			"0.0.1": {
 				"description": "First version"
+			},
+			"0.0.3": {
+				"description": "Updated the updater plugin itself"
 			}
 		}
 	}
