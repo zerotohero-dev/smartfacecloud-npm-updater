@@ -15,6 +15,9 @@
 			},
 			"0.0.4": {
 				"description": "Added emulator support"
+			},
+			"0.0.5": {
+				"description": "Created a workaround for npm list bug"
 			}
 		}
 	}

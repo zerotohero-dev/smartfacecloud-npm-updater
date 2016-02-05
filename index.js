@@ -2,7 +2,7 @@ const execFile = require('child_process').execFile;
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
-const PACKAGE_VERSION = '0.0.4';
+const PACKAGE_VERSION = '0.0.5';
 
 const CURRENT_VERSION = {
 	major: semver.major(PACKAGE_VERSION),
@@ -35,6 +35,7 @@ function facade(args) {
 				//In the future the below logic can be more complex
 				//There will be ways to update workspace via migrations
 				//And there will be options for upgrading minor or major versions
+				console.log('packagesThatCanBeInstalled', packagesThatCanBeInstalled);
 				const snapshotKey = packagesThatCanBeInstalled.pop();
 				installSnapshot(snapshotKey, globallyInstalledPackages.dependencies);
 			});
@@ -74,10 +75,16 @@ function callbackAllInstalled(packagesToInstall, err, data) {
 
 function execNpmGlobalDependenciesList(callback) {
 	var cliArgs = ['list', '-g', '--json', '--depth', '0'];
-	execNpmWrapper(cliArgs, callback);
+	execNpmWrapper(cliArgs, callback, function(stdout) {
+		var pos = stdout.indexOf('npm ERR!');
+		if (pos !== -1) {
+			stdout = stdout.substr(0, pos).trim();
+		}
+		return stdout;
+	});
 }
 
-function execNpmWrapper(cliArgs, callback) {
+function execNpmWrapper(cliArgs, callback, parser) {
 	execFile('npm', cliArgs, function(err, stdout, stderr) {
 		if (err) {
 			return callback(err);
@@ -88,6 +95,10 @@ function execNpmWrapper(cliArgs, callback) {
 		if (stdout === '') {
 			return callback(null, "");
 		}
+		if (parser) {
+			stdout = parser(stdout);
+		}
+
 		var json;
 		try {
 			json = JSON.parse(stdout);
