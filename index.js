@@ -2,7 +2,7 @@ const execFile = require('child_process').execFile;
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
-const PACKAGE_VERSION = '0.0.5';
+const PACKAGE_VERSION = '0.0.6';
 
 const CURRENT_VERSION = {
 	major: semver.major(PACKAGE_VERSION),
@@ -24,18 +24,15 @@ function facade(args) {
 				if (globallyInstalledPackages === '') {
 					return console.log('no globallyInstalledPackages', globallyInstalledPackages);
 				}
-				// console.log('globallyInstalledPackages', globallyInstalledPackages);
 				const packagesThatCanBeInstalled = filterPackageSnapshotsThatCanBeUpdated(packageSnapshots);
 				if (!(packagesThatCanBeInstalled instanceof Array)) {
 					return console.log('packagesThatCanBeInstalled is not an Array');
 				} else if (packagesThatCanBeInstalled.length === 0) {
 					return console.log('packagesThatCanBeInstalled has length zero');
 				}
-				// console.log('packagesThatCanBeInstalled', packagesThatCanBeInstalled)
 				//In the future the below logic can be more complex
 				//There will be ways to update workspace via migrations
 				//And there will be options for upgrading minor or major versions
-				console.log('packagesThatCanBeInstalled', packagesThatCanBeInstalled);
 				const snapshotKey = packagesThatCanBeInstalled.pop();
 				installSnapshot(snapshotKey, globallyInstalledPackages.dependencies);
 			});
@@ -50,9 +47,7 @@ function buildListOfPackagesWithTagsToInstall(packagesToInstall) {
 }
 
 function callbackAllInstalled(packagesToInstall, err, data) {
-	console.log('callbackAllInstalled', packagesToInstall, err, data);
 	execNpmGlobalDependenciesList(function(err, globallyInstalledPackages) {
-		console.log(err, globallyInstalledPackages);
 		if (err) {
 			return console.log('err', err);
 		}
@@ -87,9 +82,13 @@ function execNpmGlobalDependenciesList(callback) {
 function execNpmWrapper(cliArgs, callback, parser) {
 	execFile('npm', cliArgs, function(err, stdout, stderr) {
 		if (err) {
-			return callback(err);
+			if (stderr.indexOf('npm ERR! max depth reached') === -1) {
+				return callback(err);
+			}
 		} else if (stderr) {
-			return callback(stderr);
+			if (stderr.indexOf('npm ERR! max depth reached') === -1) {
+				return callback(stderr);
+			}
 		}
 		stdout = stdout.trim();
 		if (stdout === '') {
@@ -126,6 +125,9 @@ function filterPackageSnapshotsThatCanBeUpdated(packageSnapshots) {
 
 function installPackages(packagesToInstall) {
 	const packages = buildListOfPackagesWithTagsToInstall(packagesToInstall);
+	if (packages.length === 0) {
+		callbackAllInstalled(packagesToInstall);
+	}
 	execNpmWrapper(['install', '-g', '--json'].concat(packages), callbackAllInstalled.bind(null, packagesToInstall));
 }
 
@@ -143,7 +145,6 @@ function installSnapshot(snapshotKey, globallyInstalledPackages) {
 			return;
 		}
 		const packagesToInstall = filterUninstalledSnapshotPackages(globallyInstalledPackages, json);
-		// return console.log('packagesToInstall', packagesToInstall);
 		installPackages(packagesToInstall);
 	});
 }

@@ -18,6 +18,9 @@
 			},
 			"0.0.5": {
 				"description": "Created a workaround for npm list bug"
+			},
+			"0.0.6": {
+				"description": "Fixed a bug related to install"
 			}
 		}
 	}
