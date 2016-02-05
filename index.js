@@ -41,7 +41,7 @@ function facade(args) {
 }
 
 function buildListOfPackagesWithTagsToInstall(packagesToInstall) {
-	return packagesToInstall.map(item => {
+	return packagesToInstall.map(function(item){
 		return item.name + '@' + item.version;
 	});
 }
@@ -51,7 +51,7 @@ function callbackAllInstalled(packagesToInstall, err, data) {
 		if (err) {
 			return console.log('err', err);
 		}
-		packagesToInstall.forEach(elem => {
+		packagesToInstall.forEach(function(elem){
 			elem.installed = false;
 			if (globallyInstalledPackages.dependencies && 
 					globallyInstalledPackages.dependencies[elem.name] &&
@@ -150,7 +150,7 @@ function installSnapshot(snapshotKey, globallyInstalledPackages) {
 }
 
 function filterUninstalledSnapshotPackages(globallyInstalledPackages, snapshotPackages) {
-	return Object.keys(snapshotPackages).filter(key => {
+	return Object.keys(snapshotPackages).filter(function(key){
 		if (!globallyInstalledPackages[key]) {
 			return true;
 		}
@@ -158,7 +158,7 @@ function filterUninstalledSnapshotPackages(globallyInstalledPackages, snapshotPa
 			return true;
 		}
 		return false;
-	}).map(key => {
+	}).map(function(key){
 		return {
 			name: key,
 			version: snapshotPackages[key]
