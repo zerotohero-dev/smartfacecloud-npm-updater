@@ -21,6 +21,9 @@
 			},
 			"0.0.6": {
 				"description": "Fixed a bug related to install"
+			},
+			"0.0.8": {
+				"description": "Fixed a bug with emulator"
 			}
 		}
 	}
