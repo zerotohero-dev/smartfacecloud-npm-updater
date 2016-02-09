@@ -2,7 +2,7 @@ const execFile = require('child_process').execFile;
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
-const PACKAGE_VERSION = '0.0.8';
+const PACKAGE_VERSION = '0.0.9';
 
 const CURRENT_VERSION = {
 	major: semver.major(PACKAGE_VERSION),
