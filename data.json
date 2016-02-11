@@ -36,6 +36,9 @@
 			},
 			"0.0.12": {
 				"description": "Updated smartface to 0.1.29"
+			},
+			"0.0.13": {
+				"description": "Updated dispatcher to 0.0.6"
 			}
 		}
 	}
