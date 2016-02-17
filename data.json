@@ -1,4 +1,4 @@
-{	
+{
 	"0.x": {
 		"meta": {
 			"description": ""
@@ -45,6 +45,9 @@
 			},
 			"0.0.15": {
 				"description": "Updated dispatcher to 0.0.13"
+			},
+			"0.0.16": {
+				"description": "Updated smartface to 0.1.32"
 			}
 		}
 	}

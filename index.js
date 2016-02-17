@@ -2,7 +2,7 @@ const execFile = require('child_process').execFile;
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
-const PACKAGE_VERSION = '0.0.15';
+const PACKAGE_VERSION = '0.0.16';
 
 const CURRENT_VERSION = {
 	major: semver.major(PACKAGE_VERSION),
@@ -37,7 +37,7 @@ function facade(args) {
 				installSnapshot(snapshotKey, globallyInstalledPackages.dependencies);
 			});
 		}
-	});	
+	});
 }
 
 function buildListOfPackagesWithTagsToInstall(packagesToInstall) {
@@ -53,7 +53,7 @@ function callbackAllInstalled(packagesToInstall, err, data) {
 		}
 		packagesToInstall.forEach(function(elem){
 			elem.installed = false;
-			if (globallyInstalledPackages.dependencies && 
+			if (globallyInstalledPackages.dependencies &&
 					globallyInstalledPackages.dependencies[elem.name] &&
 					globallyInstalledPackages.dependencies[elem.name].version &&
 					globallyInstalledPackages.dependencies[elem.name].version === elem.version) {
