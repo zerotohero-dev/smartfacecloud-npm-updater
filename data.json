@@ -48,6 +48,9 @@
 			},
 			"0.0.16": {
 				"description": "Updated smartface to 0.1.32"
+			},
+			"0.0.17": {
+				"description": "Updated smartface to 0.1.33"
 			}
 		}
 	}
