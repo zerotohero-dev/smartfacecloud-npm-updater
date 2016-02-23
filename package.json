@@ -1,6 +1,6 @@
 {
   "name": "smartfacecloud-updater",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Auto updater for SmartfaceCloud",
   "main": "index.js",
   "bin": {
