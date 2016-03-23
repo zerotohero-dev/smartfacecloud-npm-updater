@@ -72,10 +72,12 @@
 			},
 			"0.0.24": {
 				"description": "Updated dispatcher to 0.0.14"
-			}
-			,
+			},
 			"0.0.25": {
 				"description": "Updated dispatcher to 0.0.17"
+			},
+			"0.0.26": {
+				"description": "Updated smfc to 0.1.46"
 			}
 		}
 	}
