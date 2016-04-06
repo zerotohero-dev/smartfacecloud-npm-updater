@@ -78,6 +78,9 @@
 			},
 			"0.0.26": {
 				"description": "Updated smfc to 0.1.46"
+			},
+			"0.0.27": {
+				"description": "Updated to support Multi Device for Emulators"
 			}
 		}
 	}
