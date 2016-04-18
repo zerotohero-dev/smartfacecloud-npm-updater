@@ -84,6 +84,9 @@
 			},
 			"0.0.28": {
 				"description": "Updated to support Nested Folders and new workspace"
+			},
+			"0.0.29": {
+				"description": "Fixed Multi Device Emulator issue"
 			}
 		}
 	}
