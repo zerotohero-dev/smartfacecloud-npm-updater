@@ -2,7 +2,11 @@ const execFile = require('child_process').execFile;
 const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
-const PACKAGE_VERSION = '0.0.29';
+const PACKAGE_VERSION = (function() {
+	const packageStr = fs.readFileSync('./package.json').toString();
+	const packageJson = JSON.parse(packageStr);
+	return packageJson.version;
+})();
 
 const CURRENT_VERSION = {
 	major: semver.major(PACKAGE_VERSION),
