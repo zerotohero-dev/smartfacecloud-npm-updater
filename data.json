@@ -90,6 +90,9 @@
 			},
 			"0.0.30": {
 				"description": "Fixed Multi Screen Emulator issue"
+			},
+			"0.0.31": {
+				"description": "Updater Bug Fix"
 			}
 		}
 	}

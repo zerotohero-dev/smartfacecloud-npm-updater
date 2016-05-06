@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
 const PACKAGE_VERSION = (function() {
-	const packageStr = fs.readFileSync('./package.json').toString();
+	const packageStr = fs.readFileSync(path.join(__dirname, 'package.json')).toString();
 	const packageJson = JSON.parse(packageStr);
 	return packageJson.version;
 })();
