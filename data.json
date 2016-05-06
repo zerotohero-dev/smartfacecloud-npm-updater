@@ -87,6 +87,9 @@
 			},
 			"0.0.29": {
 				"description": "Fixed Multi Device Emulator issue"
+			},
+			"0.0.30": {
+				"description": "Fixed Multi Screen Emulator issue"
 			}
 		}
 	}
