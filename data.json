@@ -96,6 +96,9 @@
 			},
 			"0.0.32": {
 				"description": "Removed UI Websocket as a dependency"
+			},
+			"0.0.33": {
+				"description": "Updated defaults.xml"
 			}
 		}
 	}

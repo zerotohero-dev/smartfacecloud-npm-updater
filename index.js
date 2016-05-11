@@ -42,6 +42,13 @@ function facade(args) {
 			});
 		}
 	});
+	handleMigrations();
+}
+
+function handleMigrations() {
+	if (PACKAGE_VERSION === '0.0.33') {
+		require('./migrations/0.x/0.0.33/run')();
+	}
 }
 
 function buildListOfPackagesWithTagsToInstall(packagesToInstall) {
