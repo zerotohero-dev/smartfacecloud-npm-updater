@@ -93,6 +93,9 @@
 			},
 			"0.0.31": {
 				"description": "Updater Bug Fix"
+			},
+			"0.0.32": {
+				"description": "Removed UI Websocket as a dependency"
 			}
 		}
 	}
