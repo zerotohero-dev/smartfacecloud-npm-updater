@@ -102,6 +102,9 @@
 			},
 			"0.0.34": {
 				"description": "Fixed a bug with defaults.xml update"
+			},
+			"0.0.35": {
+				"description": "Fixed an incorrect if-else logic"
 			}
 		}
 	}
