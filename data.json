@@ -108,6 +108,9 @@
 			},
 			"0.0.36": {
 				"description": "Bug fixes for smartface cli, Updated defaults.xml file"
+			},
+			"0.0.37": {
+				"description": "Revert back due to faulty smartface CLI package"
 			}
 		}
 	}

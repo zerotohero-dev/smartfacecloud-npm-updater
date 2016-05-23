@@ -169,6 +169,9 @@ function filterUninstalledSnapshotPackages(globallyInstalledPackages, snapshotPa
 		if (!globallyInstalledPackages[key]) {
 			return true;
 		}
+		if (key === 'smartface' && globallyInstalledPackages[key].version === '5.0.9') {
+			return true;
+		}
 		if (semver.lt(globallyInstalledPackages[key].version, snapshotPackages[key])) {
 			return true;
 		}
