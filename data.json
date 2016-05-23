@@ -105,6 +105,9 @@
 			},
 			"0.0.35": {
 				"description": "Fixed an incorrect if-else logic"
+			},
+			"0.0.36": {
+				"description": "Bug fixes for smartface cli, Updated defaults.xml file"
 			}
 		}
 	}

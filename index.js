@@ -50,6 +50,8 @@ function handleMigrations() {
 		require('./migrations/0.x/0.0.33/run')();
 	} else if (PACKAGE_VERSION === '0.0.35') {
 		require('./migrations/0.x/0.0.35/run')();
+	} else if (PACKAGE_VERSION === '0.0.36') {
+		require('./migrations/0.x/0.0.36/run')();
 	}
 }
 
