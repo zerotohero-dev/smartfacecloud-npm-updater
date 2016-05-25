@@ -111,6 +111,9 @@
 			},
 			"0.0.37": {
 				"description": "Revert back due to faulty smartface CLI package"
+			},
+			"0.0.38": {
+				"description": "Fixed incorrect IDEURL for QRCode at smartface-c9"
 			}
 		}
 	}
